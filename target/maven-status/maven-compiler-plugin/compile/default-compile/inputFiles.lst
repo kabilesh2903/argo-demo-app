@@ -1,0 +1,5 @@
+/root/myapp/src/main/java/com/example/demo/DemoApplication.java
+/root/myapp/src/main/java/com/example/demo/controller/PersonController.java
+/root/myapp/src/main/java/com/example/demo/repository/PersonRepository.java
+/root/myapp/src/main/java/com/example/demo/service/PersonService.java
+/root/myapp/src/main/java/com/example/demo/model/Person.java

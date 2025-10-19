@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: kabil2903/demo-backend:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://postgres:5432/demo
+        - name: SPRING_DATASOURCE_USERNAME
+          value: demo
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: demo_password
+        - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+          value: org.postgresql.Driver
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: demo
+spec:
+  selector:
+    app: backend
+  ports:
+  - port: 8080
+    targetPort: 8080
+  type: ClusterIP
+
